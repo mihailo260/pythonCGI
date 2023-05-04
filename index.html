@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    form {
+        display: none;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    input,
+    select,
+    div {
+        padding: 10px;
+    }
+
+    label {
+        padding: 0px;
+    }
+
+    .poruka {
+        display: none;
+        text-align: center;
+        color: white;
+        font-size: 2em;
+
+    }
+</style>
+
+<body>
+    <div class="poruka" style="background-color: red;"></div>
+    <form action="../cgi-bin/index.py" method="post">
+        <input type="text" name="imePrezime" placeholder="Ime i prezime">
+        <input type="text" name="adresa" placeholder="Adresa">
+        <input type="text" name="telefon" placeholder="Telefon">
+        <input type="text" name="email" placeholder="email">
+        <select name="vrsta_pice">
+            <option value="kapricoza">Kapricoza</option>
+            <option value="margarita">margarita</option>
+            <option value="vezuvio">Vezuvio</option>
+        </select>
+        <p>Velicna</p>
+        <div>
+            <input type="radio" id="mala" name="velicina" value="20cm">
+            <label for="mala">20cm</label>
+        </div>
+        <div>
+            <input type="radio" id="srednja" name="velicina" value="40cm">
+            <label for="srednja">40cm</label>
+        </div>
+        <div>
+            <input type="radio" id="velika" name="velicina" value="50cm">
+            <label for="velika">50cm</label>
+        </div>
+        <input type="submit" name="submit" class="btn">
+    </form>
+
+</body>
+<script>
+
+    var poruka = window.location.search;
+    poruka = poruka.split("=")[1]
+    if(poruka == undefined){
+        
+    }
+    else if (poruka != "ok") {
+        document.body.innerHTML += `<div class="poruka" style="background-color: red; display:block";>${poruka}</div>`
+    }
+    else{
+        document.body.innerHTML += `<div class="poruka" style="background-color: green; display:block";>Uspesno Poslata Forma</div>`
+    }
+
+</script>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
